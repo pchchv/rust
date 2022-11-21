@@ -35,7 +35,7 @@ fn get_mode() -> String {
 }
 
 fn main() {
-    println!("Fahrenheit to Celsius temperature converter");
+    println!("Fahrenheit/Celsius temperature converter");
     println!("To change the mode, enter 'mode");
     println!("To exit, type 'exit'");
 
