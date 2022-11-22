@@ -10,12 +10,22 @@
 //     s.len()
 // }
 
-fn main() {
-    let s = String::from("hello");
+// fn main() {
+//     let s = String::from("hello");
 
-    change(&s);
+//     change(&s);
+// }
+
+// fn change(some_string: &String) {
+//     some_string.push_str(", world"); // Error!
+// }
+
+fn main() {
+    let mut s = String::from("hello");
+
+    change(&mut s);
 }
 
-fn change(some_string: &String) {
-    some_string.push_str(", world"); // Error!
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
 }
