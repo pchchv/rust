@@ -15,15 +15,19 @@ fn main() {
     // let hello = String::from("Здравствуйте");
     // let hello = String::from("Hola");
 
-    let s1 = String::from("tic");
-    let s2 = String::from("tac");
-    let s3 = String::from("toe");
+    // let s1 = String::from("tic");
+    // let s2 = String::from("tac");
+    // let s3 = String::from("toe");
 
-    let s = s1 + "-" + &s2 + "-" + &s3;
+    // let s = s1 + "-" + &s2 + "-" + &s3;
 
-    let s1 = String::from("tic");
-    let s2 = String::from("tac");
-    let s3 = String::from("toe");
+    // let s1 = String::from("tic");
+    // let s2 = String::from("tac");
+    // let s3 = String::from("toe");
 
-    let s = format!("{s1}-{s2}-{s3}");
+    // let s = format!("{s1}-{s2}-{s3}");
+
+    for c in "Зд".chars() {
+        println!("{}", c);
+    }
 }
