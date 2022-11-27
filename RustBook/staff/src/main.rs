@@ -1,7 +1,8 @@
 use std::collections::HashMap;
 use std::io;
 
-fn adder(dept: &str, mut name: Vec<&str>, staff: &mut HashMap<String, Vec<&str>>) {
+fn adder<'a>(dept: &str, mut name: Vec<&'a str>, staff: &mut HashMap<String, Vec<&'a str>>) {
+    // Need fix mutable
     let dept_staff = staff.get(dept);
     let mut v: Vec<&str> = Vec::new();
 
@@ -45,7 +46,9 @@ fn main() {
     let mut i = 0;
 
     for word in input.split(" ") {
-        if i == 0 && (word != "Add" || word != "add") {
+        let word = word.trim();
+
+        if i == 0 && word != "Add" && word != "add" {
             getter(word, &staff);
             break;
         } else if i == 1 || i == 3 {
