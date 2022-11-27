@@ -12,6 +12,17 @@ fn get_mean(v: &[i64]) -> f64 {
     sum / count
 }
 
+fn get_median(v: &mut [i64]) -> f64 {
+    let middle = v.len() / 2;
+    v.sort();
+
+    if v.len() % 2 == 0 {
+        ((v[middle] + v[middle - 1]) as f64) / 2.0
+    } else {
+        v[middle] as f64
+    }
+}
+
 fn main() {
     let mut v: Vec<i64> = Vec::new();
 
@@ -41,5 +52,6 @@ fn main() {
         v.push(input);
     }
 
-    println!("Mean: {}", get_mean(&v))
+    println!("Mean: {}", get_mean(&v));
+    println!("Median: {}", get_median(&mut v));
 }
