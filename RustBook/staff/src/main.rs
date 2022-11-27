@@ -3,7 +3,7 @@ use std::io;
 
 fn adder(command: String, staff: &HashMap<String, Vec<&str>>) {}
 
-fn getter(dept: &str) {}
+fn getter(dept: &str, staff: &HashMap<String, Vec<&str>>) {}
 
 fn main() {
     let staff: HashMap<String, Vec<&str>> = HashMap::new();
@@ -21,7 +21,7 @@ fn main() {
 
     for word in input.split(" ") {
         if i == 0 && (word != "Add" || word != "add") {
-            getter(word)
+            getter(word, &staff)
         } else if i == 1 || i == 3 {
             command.push_str(word)
         }
