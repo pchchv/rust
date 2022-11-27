@@ -30,5 +30,5 @@ fn main() {
         result.push_str(" ")
     }
 
-    println!("{}", result.trim());
+    println!("\n{}", result.trim());
 }
