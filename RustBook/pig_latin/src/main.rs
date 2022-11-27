@@ -16,6 +16,8 @@ fn main() {
     let mut input = String::new();
     let mut result = String::new();
 
+    println!("Input the string for the encoding:");
+
     io::stdin()
         .read_line(&mut input)
         .expect("Failed to read line");
