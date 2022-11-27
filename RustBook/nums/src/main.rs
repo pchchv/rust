@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::io;
 
 fn get_mean(v: &[i64]) -> f64 {
@@ -21,6 +22,23 @@ fn get_median(v: &mut [i64]) -> f64 {
     } else {
         v[middle] as f64
     }
+}
+
+fn get_mode(v: &[i64]) -> Vec<i64> {
+    let mut mode_map = HashMap::new();
+
+    for num in v {
+        let count = mode_map.entry(num).or_insert(0);
+        *count += 1;
+    }
+
+    let max_value = mode_map.values().cloned().max().unwrap_or(0);
+
+    mode_map
+        .into_iter()
+        .filter(|&(_, v)| v == max_value)
+        .map(|(&k, _)| k)
+        .collect()
 }
 
 fn main() {
@@ -54,4 +72,5 @@ fn main() {
 
     println!("Mean: {}", get_mean(&v));
     println!("Median: {}", get_median(&mut v));
+    println!("Mode: {:?}", get_mode(&v));
 }
