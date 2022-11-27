@@ -1,5 +1,17 @@
 use std::io;
 
+fn get_mean(v: &[i64]) -> f64 {
+    let mut count: f64 = 0.0;
+    let mut sum: f64 = 0.0;
+
+    for num in v {
+        sum += *num as f64;
+        count += 1.0;
+    }
+
+    sum / count
+}
+
 fn main() {
     let mut v: Vec<i64> = Vec::new();
 
@@ -28,4 +40,6 @@ fn main() {
 
         v.push(input);
     }
+
+    println!("Mean: {}", get_mean(&v))
 }
