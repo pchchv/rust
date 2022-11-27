@@ -1,7 +1,17 @@
 use std::collections::HashMap;
 use std::io;
 
-fn adder(command: Vec<&str>, staff: &HashMap<String, Vec<&str>>) {}
+fn adder(command: Vec<&str>, staff: &mut HashMap<String, Vec<&str>>) {
+    let dept_staff = staff.get(command[1]);
+    let mut v: Vec<&str> = vec![command[0]];
+
+    if dept_staff != Option::None {
+        let mut dept_staff = dept_staff.unwrap().clone();
+        v.append(&mut dept_staff)
+    }
+
+    staff.insert(command[1].to_string(), v);
+}
 
 fn getter(dept: &str, staff: &HashMap<String, Vec<&str>>) {
     let dept_staff = staff.get(dept);
@@ -21,7 +31,7 @@ fn getter(dept: &str, staff: &HashMap<String, Vec<&str>>) {
 fn main() {
     let mut input = String::new();
     let mut command: Vec<&str> = Vec::new();
-    let staff: HashMap<String, Vec<&str>> = HashMap::new();
+    let mut staff: HashMap<String, Vec<&str>> = HashMap::new();
 
     println!("To add an employee to the department, type 'Add <Name> to <Department>'");
     println!("To view the employees of a department, enter the name of department");
@@ -43,6 +53,6 @@ fn main() {
     }
 
     if i == 3 {
-        adder(command, &staff)
+        adder(command, &mut staff)
     }
 }
