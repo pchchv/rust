@@ -14,10 +14,19 @@ fn pigify(word: &str) -> String {
 
 fn main() {
     let mut input = String::new();
+    let mut result = String::new();
 
     io::stdin()
         .read_line(&mut input)
         .expect("Failed to read line");
 
     let input = input.split(" ");
+
+    for word in input {
+        let w = pigify(word);
+        result.push_str(&w);
+        result.push_str(" ")
+    }
+
+    println!("{}", result.trim());
 }
