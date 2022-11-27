@@ -1,16 +1,18 @@
 use std::collections::HashMap;
 use std::io;
 
-fn adder(command: Vec<&str>, staff: &mut HashMap<String, Vec<&str>>) {
-    let dept_staff = staff.get(command[1]);
-    let mut v: Vec<&str> = vec![command[0]];
+fn adder(dept: &str, mut name: Vec<&str>, staff: &mut HashMap<String, Vec<&str>>) {
+    let dept_staff = staff.get(dept);
+    let mut v: Vec<&str> = Vec::new();
 
     if dept_staff != Option::None {
         let mut dept_staff = dept_staff.unwrap().clone();
         v.append(&mut dept_staff)
     }
 
-    staff.insert(command[1].to_string(), v);
+    v.append(&mut name);
+
+    staff.insert(dept.to_string(), name);
 }
 
 fn getter(dept: &str, staff: &HashMap<String, Vec<&str>>) {
@@ -53,6 +55,6 @@ fn main() {
     }
 
     if i == 3 {
-        adder(command, &mut staff)
+        adder(command[1], vec![command[0]], &mut staff)
     }
 }
