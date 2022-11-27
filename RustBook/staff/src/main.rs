@@ -4,11 +4,17 @@ use std::io;
 fn adder(command: Vec<&str>, staff: &HashMap<String, Vec<&str>>) {}
 
 fn getter(dept: &str, staff: &HashMap<String, Vec<&str>>) {
-    let dept_staff = &staff[dept];
+    let dept_staff = staff.get(dept);
 
-    println!("Staff of {dept} department: ");
-    for name in dept_staff.iter() {
-        println!("{name}")
+    if dept_staff == Option::None {
+        println!("Department not found!");
+        println!("Maybe the employees of this department have not yet been added");
+    } else {
+        println!("Staff of {dept} department: ");
+
+        for name in dept_staff.unwrap().iter() {
+            println!("    {name}");
+        }
     }
 }
 
