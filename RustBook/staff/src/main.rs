@@ -1,21 +1,6 @@
 use std::collections::HashMap;
 use std::io;
 
-fn adder<'a>(dept: &str, mut name: Vec<&'a str>, staff: &mut HashMap<String, Vec<&'a str>>) {
-    // Need fix mutable
-    let dept_staff = staff.get(dept);
-    let mut v: Vec<&str> = Vec::new();
-
-    if dept_staff != Option::None {
-        let mut dept_staff = dept_staff.unwrap().clone();
-        v.append(&mut dept_staff)
-    }
-
-    v.append(&mut name);
-
-    staff.insert(dept.to_string(), name);
-}
-
 fn getter(dept: &str, staff: &HashMap<String, Vec<&str>>) {
     let dept_staff = staff.get(dept);
 
@@ -54,7 +39,11 @@ fn main() {
         let first_word = command[0].to_string();
 
         if first_word == "Add" {
-            adder(command[3], vec![command[1]], &mut staff);
+            let name = String::from(command[1]);
+            let department = String::from(command[3]);
+            let department = staff.entry(department).or_insert(vec![]);
+
+            department.push(&name);
         } else if first_word == "Exit" {
             break;
         } else {
