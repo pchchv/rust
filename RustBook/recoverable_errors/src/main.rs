@@ -1,8 +1,9 @@
-use std::fs;
-use std::io;
-// use std::fs::File;
+// use std::fs;
+// use std::io;
+use std::fs::File;
 // use std::io::ErrorKind;
 // use std::io::{self, Read};
+use std::error::Error;
 
 // fn main() {
 //     let greeting_file_result = File::open("hello.txt");
@@ -80,10 +81,16 @@ use std::io;
 //     Ok(username)
 // }
 
-fn read_username_from_file() -> Result<String, io::Error> {
-    fs::read_to_string("hello.txt")
-}
+// fn read_username_from_file() -> Result<String, io::Error> {
+//     fs::read_to_string("hello.txt")
+// }
 
-fn main() {
-    let reuslt = read_username_from_file();
+// fn main() {
+//     let reuslt = read_username_from_file();
+// }
+
+fn main() -> Result<(), Box<dyn Error>> {
+    let greeting_file = File::open("hello.txt")?;
+
+    Ok(())
 }
