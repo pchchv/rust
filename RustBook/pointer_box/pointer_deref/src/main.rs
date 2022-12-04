@@ -6,10 +6,18 @@
 //     assert_eq!(5, *y);
 // }
 
-fn main() {
-    let x = 5;
-    let y = Box::new(x);
+// fn main() {
+//     let x = 5;
+//     let y = Box::new(x);
 
-    assert_eq!(5, x);
-    assert_eq!(5, *y);
+//     assert_eq!(5, x);
+//     assert_eq!(5, *y);
+// }
+
+struct MyBox<T>(T);
+
+impl<T> MyBox<T> {
+    fn new(x: T) -> MyBox<T> {
+        MyBox(x)
+    }
 }
