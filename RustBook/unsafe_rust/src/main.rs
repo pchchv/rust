@@ -19,7 +19,15 @@
 //     println!("Just called a Rust function from C!");
 // }
 
-static HELLO_WORLD: &str = "Hello, world!";
+// static HELLO_WORLD: &str = "Hello, world!";
+
+static mut COUNTER: u32 = 0;
+
+fn add_to_count(inc: u32) {
+    unsafe {
+        COUNTER += inc;
+    }
+}
 
 fn main() {
     // // let mut num = 5;
@@ -59,5 +67,12 @@ fn main() {
     //             println!("Absolute value of -3 according to C: {}", abs(-3));
     //         }
     //     }
-    println!("name is: {}", HELLO_WORLD);
+
+    // println!("name is: {}", HELLO_WORLD);
+
+    add_to_count(3);
+
+    unsafe {
+        println!("COUNTER: {}", COUNTER);
+    }
 }
