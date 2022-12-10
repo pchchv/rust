@@ -14,10 +14,12 @@
 //     }
 // }
 
-#[no_mangle]
-pub extern "C" fn call_from_c() {
-    println!("Just called a Rust function from C!");
-}
+// #[no_mangle]
+// pub extern "C" fn call_from_c() {
+//     println!("Just called a Rust function from C!");
+// }
+
+static HELLO_WORLD: &str = "Hello, world!";
 
 fn main() {
     // // let mut num = 5;
@@ -48,13 +50,14 @@ fn main() {
     // assert_eq!(a, &mut [1, 2, 3]);
     // assert_eq!(b, &mut [4, 5, 6]);
 
-    extern "C" {
-        fn abs(input: i32) -> i32;
-    }
+    //     extern "C" {
+    //         fn abs(input: i32) -> i32;
+    //     }
 
-    fn main() {
-        unsafe {
-            println!("Absolute value of -3 according to C: {}", abs(-3));
-        }
-    }
+    //     fn main() {
+    //         unsafe {
+    //             println!("Absolute value of -3 according to C: {}", abs(-3));
+    //         }
+    //     }
+    println!("name is: {}", HELLO_WORLD);
 }
