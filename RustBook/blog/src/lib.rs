@@ -67,6 +67,12 @@ impl PendingReviewPost {
             content: self.content,
         }
     }
+
+    pub fn reject(self) -> DraftPost {
+        DraftPost {
+            content: self.content,
+        }
+    }
 }
 
 // trait State {
