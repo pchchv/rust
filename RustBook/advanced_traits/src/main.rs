@@ -1,3 +1,5 @@
+use std::fmt;
+
 // use std::ops::Add;
 
 // #[derive(Debug, Copy, Clone, PartialEq)]
@@ -72,25 +74,38 @@
 //     person.fly();
 // }
 
-trait Animal {
-    fn baby_name() -> String;
-}
+// trait Animal {
+//     fn baby_name() -> String;
+// }
 
-struct Dog;
+// struct Dog;
 
-impl Dog {
-    fn baby_name() -> String {
-        String::from("Spot")
+// impl Dog {
+//     fn baby_name() -> String {
+//         String::from("Spot")
+//     }
+// }
+
+// impl Animal for Dog {
+//     fn baby_name() -> String {
+//         String::from("puppy")
+//     }
+// }
+
+// fn main() {
+//     println!("A baby dog is called a {}", <Dog as Animal>::baby_name());
+//     println!("A baby dog is called a {}", Dog::baby_name());
+// }
+
+trait OutlinePrint: fmt::Display {
+    fn outline_print(&self) {
+        let output = self.to_string();
+        let len = output.len();
+
+        println!("{}", "*".repeat(len + 4));
+        println!("*{}*", " ".repeat(len + 2));
+        println!("* {} *", output);
+        println!("*{}*", " ".repeat(len + 2));
+        println!("{}", "*".repeat(len + 4));
     }
-}
-
-impl Animal for Dog {
-    fn baby_name() -> String {
-        String::from("puppy")
-    }
-}
-
-fn main() {
-    println!("A baby dog is called a {}", <Dog as Animal>::baby_name());
-    println!("A baby dog is called a {}", Dog::baby_name());
 }
