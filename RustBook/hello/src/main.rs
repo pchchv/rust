@@ -35,7 +35,7 @@ fn main() {
     for stream in listener.incoming() {
         let stream = stream.unwrap();
 
-        pool::execute(|| {
+        pool.execute(|| {
             handle_connection(stream);
         });
     }
