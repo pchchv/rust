@@ -1,4 +1,4 @@
-use hello_macro::HelloMacro;
+use crate::hello_macro::HelloMacro;
 use hello_macro_derive::HelloMacro;
 
 #[derive(HelloMacro)]
